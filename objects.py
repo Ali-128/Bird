@@ -15,3 +15,11 @@ class Stuff:
 		pass
 	def show(self):
 		pass
+class Cloud:
+	def __init__(self,screen):
+		self.screen=screen
+		pass
+	def update(self):
+		pass
+	def show(self):
+		pass
