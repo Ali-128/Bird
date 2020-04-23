@@ -5,6 +5,11 @@ def run(width,height):
 	pygame.init()
 	screen=pygame.display.set_mode((width,height))
 	pygame.display.set_caption("Flying Bird")
+<<<<<<< HEAD
+=======
+	bird=objects.Bird(screen)
+	stuffs=[]
+>>>>>>> 7ba2e17e96c08e715371004d48304b265c840550
 	while True:
 		for event in pygame.event.get():
 			if event.type==pygame.QUIT:
