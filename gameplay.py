@@ -4,12 +4,9 @@ import objects
 def run(width,height):
 	pygame.init()
 	screen=pygame.display.set_mode((width,height))
-<<<<<<< HEAD
 	pygame.display.set_caption("Flying Bird")
-=======
 	bird=objects.Bird(screen)
 	stuffs=[]
->>>>>>> 34d8c138efd0a0f47a80715728d648dd6b306d72
 	while True:
 		for event in pygame.event.get():
 			if event.type==pygame.QUIT:
