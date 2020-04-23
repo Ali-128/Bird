@@ -4,6 +4,7 @@ import sys
 def run(width,height):
 	pygame.init()
 	screen=pygame.display.set_mode((width,height))
+	pygame.display.set_caption("Flying Bird")
 	while True:
 		for event in pygame.event.get():
 			if event.type==pygame.QUIT:
