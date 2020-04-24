@@ -5,16 +5,13 @@ def run(width,height):
 	pygame.init()
 	screen=pygame.display.set_mode((width,height))
 	pygame.display.set_caption("Flying Bird")
-<<<<<<< HEAD
-=======
-	bird=objects.Bird(screen)
-	stuffs=[]
->>>>>>> 7ba2e17e96c08e715371004d48304b265c840550
+	back=pygame.image.load('pictures/sky.png')
+	bird=objects.Bird(screen,100,100,1,1)
 	while True:
 		for event in pygame.event.get():
 			if event.type==pygame.QUIT:
 				sys.exit(0)
-		screen.fill((255,255,255))
+		screen.blit(back,(0,0))
 		bird.update()
 		bird.show()
 		pygame.display.update()
