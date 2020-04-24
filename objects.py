@@ -6,7 +6,11 @@ class Bird:
 		self.bird_y=bird_y
 		self.speed_X=speed_X
 		self.speed_Y=speed_Y
+<<<<<<< HEAD
 		self.image=pygame.image.load("picture/redbird-midflap.png")
+=======
+		self.image=pygame.image.load("pictures/redbird-upflap.png")
+>>>>>>> b973c73899ec82834b120dfdbc792b81f9642b7d
 		
 	def update(self):
 		pass
@@ -29,7 +33,7 @@ class Stuff:
 	def show(self):
 		pass
 class Cloud:
-    	def __init__(self,screen):
+	def __init__(self,screen):
 		self.screen=screen
 		pass
 	def update(self):
