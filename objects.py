@@ -6,7 +6,7 @@ class Bird:
 		self.bird_y=bird_y
 		self.speed_X=speed_X
 		self.speed_Y=speed_Y
-		self.image=pygame.image.load("picture/redbird-midflap.png")
+		self.image=pygame.image.load("pictures/redbird-midflap.png")
 		
 	def update(self):
 		pass
