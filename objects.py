@@ -1,9 +1,9 @@
 import pygame
 class Bird:
-	def __init__(self,screen,x_bird,y_bird,speed_X,speed_Y):
+	def __init__(self,screen,bird_x,bird_y,speed_X,speed_Y):
 		self.screen=screen
-		self.x_bird=x_bird
-		self.y_bird=y_bird
+		self.bird_x=bird_x
+		self.bird_y=bird_y
 		self.speed_X=speed_X
 		self.speed_Y=speed_Y
 		self.image=pygame.image.load("redbird-upflap.png")
