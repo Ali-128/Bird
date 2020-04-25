@@ -55,16 +55,26 @@ class Pipe:
 >>>>>>> 4813647cae89b1d4c17dc94d987912783d4ba3a7
 	def __init__(self,screen):
 		self.screen=screen
-		pass
+		self.xpos=self.screen.get_width()
+		self.ypos_u=random()*self.screen.get_height()
+		self.ypos_d=random()*self.screen.get_height()
+		self.uppipe=pygame.image.laod('pipe-green.png')
+		self.downpipe=pygame.image.load('pip-green-d.png')
 	def update(self):
-		pass
+		for event in pygame.event.get():
+			if event.type==pygame.QUIT:
+				pass
+		self.xpos+=-3
 	def show(self):
-		pass
+		self.screen.blit(self.uppipe, (self.xpos, self.ypos_u))
+		self.screen.blit(self.downpipe, (self.xpos, self.ypos_d))
 class Cloud:
 	def __init__(self,screen):
 		self.screen=screen
-		pass
+		self.cloud=pygame.image.load('w-cloud-new.png')
+		self.xpos=self.screen.get_width()
+		self.ypos=random()*self.screen.get_height()
 	def update(self):
-		pass
+		self.xpos+=-5
 	def show(self):
-		pass
+		self.screen.blit(self.cloud, (self.xpos, self.ypos))
