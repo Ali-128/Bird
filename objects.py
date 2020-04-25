@@ -6,7 +6,7 @@ class Bird:
 		self.bird_y=bird_y
 		self.speed_X=speed_X
 		self.speed_Y=speed_Y
-		self.g=0.04
+		self.g=0.1
 		self.go=False
 		self.image=pygame.image.load("pictures/redbird-midflap.png")
 	def gameover(self):
@@ -21,13 +21,13 @@ class Bird:
 		for event in pygame.event.get():
 			if event.type==pygame.KEYDOWN:
 				if event.key==pygame.K_SPACE:
-						self.speed_Y-=60*self.g
+						self.speed_Y-=self.g*40
 		self.speed_Y+=self.g
 		self.bird_y+=self.speed_Y
-		if self.bird_y < 0 or self.bird_y > self.screen.get_height():
+		'''if self.bird_y < 0 or self.bird_y > self.screen.get_height():
 			self.gameover()
 			self.speed_Y=0
-			self.g=0
+			self.g=0'''
 	def show(self):
 		self.screen.blit(self.image,(self.bird_x,self.bird_y))
 
