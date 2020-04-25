@@ -22,12 +22,15 @@ class Bird:
 			if event.type==pygame.KEYDOWN:
 				if event.key==pygame.K_SPACE:
 						self.speed_Y-=self.g*40
-		self.speed_Y+=self.g
+		if self.speed_Y > 0:
+			self.speed_Y+=self.g
+		else:
+			self.speed_Y+=1.5*self.g
 		self.bird_y+=self.speed_Y
-		'''if self.bird_y < 0 or self.bird_y > self.screen.get_height():
+		if self.bird_y < 0 or self.bird_y > self.screen.get_height():
 			self.gameover()
 			self.speed_Y=0
-			self.g=0'''
+			self.g=0
 	def show(self):
 		self.screen.blit(self.image,(self.bird_x,self.bird_y))
 
