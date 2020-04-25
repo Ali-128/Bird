@@ -46,8 +46,13 @@ class Bird:
 		if self.counter == 3:
 			self.counter = 0
 	def show(self):
+<<<<<<< HEAD
 		self.screen.blit(self.images[self.counter % 3],(self.bird_x,self.bird_y))
 class Stuff:
+=======
+		self.screen.blit(self.images[self.counter % 3],(self.x,self.y))
+class Pipe:
+>>>>>>> 4813647cae89b1d4c17dc94d987912783d4ba3a7
 	def __init__(self,screen):
 		self.screen=screen
 		pass
