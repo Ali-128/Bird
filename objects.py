@@ -65,9 +65,10 @@ class Pipe:
 		pygame.display.update()
 	def __newpipe(self,xpos):
 		self.xpos=xpos
-		self.ypos_u=self.height-random.random()*self.height//2
+		#self.ypos_u=self.height-random.random()*self.height//2
+		self.ypos_u=(random.random()*self.height/4)+self.height/2 +12
 		self.y1=self.ypos_u
-		self.y2=random.random()*self.height//2
+		self.y2=random.random()*self.height/4 + self.height/4 -12
 		self.ypos_d=self.y2 - self.downpipe.get_height()
 	def update(self,scores):
 		self.xpos-=self.speed_x
