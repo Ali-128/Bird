@@ -62,7 +62,9 @@ class Pipe:
 	def __newpipe(self,xpos):
 		self.xpos=xpos
 		self.ypos_u=self.height-random.random()*self.height//2
-		self.ypos_d=(random.random()*self.height//2) - self.downpipe.get_height()
+		self.y1=self.ypos_u
+		self.y2=random.random()*self.height//2
+		self.ypos_d=self.y2 - self.downpipe.get_height()
 	def update(self,scores):
 		self.xpos-=self.speed_x
 		if self.xpos+self.uppipe.get_width()<0:
