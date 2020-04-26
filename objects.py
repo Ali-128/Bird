@@ -23,6 +23,8 @@ class Bird:
 		self.images=[pygame.image.load(pictures['down_bird']),pygame.image.load(pictures['mid_bird']),pygame.image.load(pictures['up_bird'])]
 		self.counter=0
 	def gameover(self):
+			self.speed_y=0
+			self.y_change=0
 			text="Game Over"
 			text_font=pygame.font.SysFont('freesansbold.ttf',50)
 			textSurface=text_font.render(text,True,(255,0,0))
@@ -42,18 +44,15 @@ class Bird:
 		self.bird_y+=self.speed_y
 		if self.bird_y < 0 or self.bird_y > self.screen.get_height():
 			self.gameover()
-			self.speed_y=0
-			self.y_change=0
 		self.counter+=1
 		if self.counter == 3:
 			self.counter = 0
 	def show(self):
-		self.screen.blit(self.images[self.counter % 3],(self.bird_x,self.bird_y))
-	def is_col(pipe):
-		if self.bird_x>pipe.xpos and self.bird_x<pipe.xpos+pipe.downpipe.get_width() and self.bird_y<pipe.y1:
-			gameover()
-		if self.bird_x>pipe.xpos and self.bird_x<pipe.xpos+pipe.uppipe.get_width() and self.bird_y>pipe.y2:
-			gameover()
+		self.screen.blit(self.images[self.counter],(self.bird_x,self.bird_y))
+	def is_col(self,pipe):
+		if self.bird_x>pipe.xpos and self.bird_x<pipe.xpos+pipe.downpipe.get_width()+self.images[self.counter].get_width():
+			if self.bird_y<pipe.y2 or self.bird_y+self.images[self.counter].get_height()>pipe.y1:
+				self.gameover()
 class Pipe:
 	def __init__(self,screen,xpos,speed_x):
 		self.screen=screen
