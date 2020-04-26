@@ -6,16 +6,18 @@ def run(width,height):
 	screen=pygame.display.set_mode((width,height))
 	pygame.display.set_caption("Flying Bird")
 	back=pygame.image.load('pictures/sky.png')
-	bird=objects.Bird(screen,100,100,0,0,0.1)
+	bird=objects.Bird(screen,100,100,0,0,0.4)
 	pipes=[]
-	for i in range(4):
-		pipes.append(objects.Pipe(screen))
+	scores=0
+	for i in range(3):
+		pipes.append(objects.Pipe(screen,i*300+300,4))
 	while True:
 		screen.blit(back,(0,0))
 		bird.show()
 		bird.update()
 		for i in pipes:
-			bird.is_col(i)
+			i.show()
+			scores=i.update(scores)
 		pygame.display.update()
 def main(args):
 	run(800,600)

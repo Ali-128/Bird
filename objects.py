@@ -1,8 +1,10 @@
 import pygame
+import random
 pictures={'mid_bird':'pictures/redbird-midflap.png',
           'up_bird':'pictures/redbird-upflap.png',
           'down_bird':'pictures/redbird-downflap.png',
-          'green_pipe':'pictures/pipe-green.png',
+          'green_pipe_u':'pictures/pipe-green-u.png',
+		  'green_pipe_d':'pictures/pipe-green-d.png',
           'red_pipe_up':'pictures/red-pipe.png',
           'red_pipe_down':'pictures/red-pipe-d.png',
           'cloud':'pictures/cloud.png',
@@ -18,7 +20,7 @@ class Bird:
 		self.speed_x=speed_x
 		self.speed_y=speed_y
 		self.y_change=y_change
-		self.images=[pygame.image.load("pictures/redbird-downflap.png"),pygame.image.load("pictures/redbird-midflap.png"),pygame.image.load("pictures/redbird-upflap.png")]
+		self.images=[pygame.image.load(pictures['down_bird']),pygame.image.load(pictures['mid_bird']),pygame.image.load(pictures['up_bird'])]
 		self.counter=0
 	def gameover(self):
 			text="Game Over"
@@ -34,9 +36,9 @@ class Bird:
 				if event.key==pygame.K_SPACE:
 						self.speed_y-=self.y_change*40
 		if self.speed_y > 0:
-			self.speed_y+=self.y_change
+			self.speed_y+=1.1*self.y_change
 		else:
-			self.speed_y+=1.7*self.y_change
+			self.speed_y+=3*self.y_change
 		self.bird_y+=self.speed_y
 		if self.bird_y < 0 or self.bird_y > self.screen.get_height():
 			self.gameover()
@@ -46,34 +48,36 @@ class Bird:
 		if self.counter == 3:
 			self.counter = 0
 	def show(self):
-<<<<<<< HEAD
 		self.screen.blit(self.images[self.counter % 3],(self.bird_x,self.bird_y))
-class Stuff:
-=======
-		self.screen.blit(self.images[self.counter % 3],(self.x,self.y))
 class Pipe:
->>>>>>> 4813647cae89b1d4c17dc94d987912783d4ba3a7
-	def __init__(self,screen):
+	def __init__(self,screen,xpos,speed_x):
 		self.screen=screen
-		self.xpos=self.screen.get_width()
-		self.ypos_u=random()*self.screen.get_height()
-		self.ypos_d=random()*self.screen.get_height()
-		self.uppipe=pygame.image.laod('pipe-green.png')
-		self.downpipe=pygame.image.load('pip-green-d.png')
-	def update(self):
-		for event in pygame.event.get():
-			if event.type==pygame.QUIT:
-				pass
-		self.xpos+=-3
+		self.speed_x=speed_x
+		self.width=screen.get_width()
+		self.height=screen.get_height()
+		self.uppipe=pygame.image.load(pictures['green_pipe_u'])
+		self.downpipe=pygame.image.load(pictures['green_pipe_d'])
+		self.__newpipe(xpos)
+		pygame.display.update()
+	def __newpipe(self,xpos):
+		self.xpos=xpos
+		self.ypos_u=self.height-random.random()*self.height//2
+		self.ypos_d=(random.random()*self.height//2) - self.downpipe.get_height()
+	def update(self,scores):
+		self.xpos-=self.speed_x
+		if self.xpos+self.uppipe.get_width()<0:
+			scores+=1
+			self.__newpipe(self.width)
+		return scores
 	def show(self):
 		self.screen.blit(self.uppipe, (self.xpos, self.ypos_u))
 		self.screen.blit(self.downpipe, (self.xpos, self.ypos_d))
 class Cloud:
 	def __init__(self,screen):
 		self.screen=screen
-		self.cloud=pygame.image.load('w-cloud-new.png')
+		self.cloud=pygame.image.load(pictures['white_cloud'])
 		self.xpos=self.screen.get_width()
-		self.ypos=random()*self.screen.get_height()
+		self.ypos=random.random()*self.screen.get_height()
 	def update(self):
 		self.xpos+=-5
 	def show(self):
