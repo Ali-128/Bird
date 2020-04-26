@@ -49,6 +49,11 @@ class Bird:
 			self.counter = 0
 	def show(self):
 		self.screen.blit(self.images[self.counter % 3],(self.bird_x,self.bird_y))
+	def is_col(pipe):
+		if self.bird_x>pipe.xpos and self.bird_x<pipe.xpos+pipe.downpipe.get_width() and self.bird_y<pipe.y1:
+			gameover()
+		if self.bird_x>pipe.xpos and self.bird_x<pipe.xpos+pipe.uppipe.get_width() and self.bird_y>pipe.y2:
+			gameover()
 class Pipe:
 	def __init__(self,screen,xpos,speed_x):
 		self.screen=screen

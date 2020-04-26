@@ -18,6 +18,7 @@ def run(width,height):
 		for i in pipes:
 			i.show()
 			scores=i.update(scores)
+			bird.is_col(i)
 		pygame.display.update()
 def main(args):
 	run(800,600)
