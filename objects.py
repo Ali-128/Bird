@@ -91,8 +91,8 @@ class Cloud:
 		self.xpos=xpos
 		self.ypos=(self.screen.get_height()-self.cloud.get_height())*random.random()
 	def update(self):
-		self.xpos+=-1
-		if self.xpos < 0:
+		self.xpos+=-1.5
+		if self.xpos + self.cloud.get_width() < 0:
 			self.__newcloud(self.screen.get_width())
 	def show(self):
 		self.screen.blit(self.cloud, (self.xpos, self.ypos))
