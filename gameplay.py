@@ -23,7 +23,7 @@ def run(width,height):
 			if not bird.gameover:
 				scores=i.update(scores)
 				bird.is_col(i)
-		objects.print_text(screen,str(scores),(700,100))
+		objects.print_text(screen,"score:"+ str(scores),(0,0))
 		if bird.gameover:
 			objects.print_text(screen,'GAME OVER',(screen.get_width()//2-95,screen.get_height()//2-30))
 		pygame.display.update()
