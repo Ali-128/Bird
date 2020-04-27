@@ -25,8 +25,8 @@ class Bird:
 		self.images=[pygame.image.load(pictures['down_bird']),pygame.image.load(pictures['mid_bird']),pygame.image.load(pictures['up_bird'])]
 		self.counter=0
 	def __gameover(self):
-			#self.speed_y=0
-			#self.y_change=0
+			self.speed_y=0
+			self.y_change=0
 			self.gameover=True
 			text="Game Over"
 			text_font=pygame.font.SysFont('freesansbold.ttf',50)
