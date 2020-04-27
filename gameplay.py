@@ -20,8 +20,9 @@ def run(width,height):
 		bird.update()
 		for i in pipes:
 			i.show()
-			scores=i.update(scores)
-			bird.is_col(i)
+			if not bird.gameover:
+				scores=i.update(scores)
+				bird.is_col(i)
 		pygame.display.update()
 def main(args):
 	run(800,600)

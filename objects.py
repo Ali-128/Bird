@@ -35,6 +35,8 @@ class Bird:
 			self.screen.blit(textSurface,textRect)
 			pygame.display.update()
 	def update(self):
+		if self.bird_y > self.screen.get_height():
+			return
 		for event in pygame.event.get():
 			if event.type==pygame.KEYDOWN:
 				if event.key==pygame.K_SPACE and not self.gameover:
