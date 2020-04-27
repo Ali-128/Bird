@@ -25,8 +25,8 @@ class Bird:
 		self.images=[pygame.image.load(pictures['down_bird']),pygame.image.load(pictures['mid_bird']),pygame.image.load(pictures['up_bird'])]
 		self.counter=0
 	def __gameover(self):
-			self.speed_y=0
-			self.y_change=0
+			#self.speed_y=0
+			#self.y_change=0
 			self.gameover=True
 			text="Game Over"
 			text_font=pygame.font.SysFont('freesansbold.ttf',50)
@@ -86,13 +86,13 @@ class Cloud:
 	def __init__(self,screen):
 		self.screen=screen
 		self.cloud=pygame.image.load(pictures['white_cloud'])
-		'''self.xpos=self.screen.get_width()
-		self.ypos=random.random()*self.screen.get_height()'''
 		self.__newcloud(self.screen.get_width())
 	def __newcloud(self,xpos):
 		self.xpos=xpos
 		self.ypos=(self.screen.get_height()-self.cloud.get_height())*random.random()
 	def update(self):
-		self.xpos+=-5
+		self.xpos+=-1
+		if self.xpos < 0:
+			self.__newcloud(self.screen.get_width())
 	def show(self):
 		self.screen.blit(self.cloud, (self.xpos, self.ypos))
