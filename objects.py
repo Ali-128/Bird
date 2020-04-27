@@ -29,11 +29,7 @@ class Bird:
 		self.images=[pygame.image.load(pictures['down_bird']),pygame.image.load(pictures['mid_bird']),pygame.image.load(pictures['up_bird'])]
 		self.counter=0
 	def __gameover(self):
-			#self.speed_y=0
-			#self.y_change=0
 			self.gameover=True
-			text="Game Over"
-			print_text(self.screen,text,(self.screen.get_width()//2-95,self.screen.get_height()//2-30))
 			pygame.display.update()
 	def update(self):
 		if self.bird_y > self.screen.get_height():
