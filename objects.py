@@ -1,5 +1,6 @@
 import pygame
 import random
+random.seed()
 pictures={'mid_bird':'pictures/redbird-midflap.png',
           'up_bird':'pictures/redbird-upflap.png',
           'down_bird':'pictures/redbird-downflap.png',
