@@ -1,10 +1,10 @@
 import pygame
 import random
 random.seed()
-def print_text(text,fontsize,color):
-    text_font=pygame.font.SysFont('freesansbold.ttf',fontsize)
-    textSurface=text_font.render(text,True,color)
-    return textSurface
+def print_text(screen,text,point):
+    text_font=pygame.font.SysFont('freesansbold.ttf',50)
+    textSurface=text_font.render(text,True,(255,0,0))
+    screen.blit(textSurface,(point[0],point[1]))
 pictures={'mid_bird':'pictures/redbird-midflap.png',
           'up_bird':'pictures/redbird-upflap.png',
           'down_bird':'pictures/redbird-downflap.png',
@@ -33,7 +33,7 @@ class Bird:
 			#self.y_change=0
 			self.gameover=True
 			text="Game Over"
-			self.screen.blit(print_text(text,50,(255,0,0)),(self.screen.get_width()//2-95,self.scree.get_height()//2-30))
+			print_text(self.screen,text,(self.screen.get_width()//2-95,self.screen.get_height()//2-30))
 			pygame.display.update()
 	def update(self):
 		if self.bird_y > self.screen.get_height():
